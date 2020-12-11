@@ -1,39 +1,36 @@
-import math
 class Shape:
-    def __init__(self, name, side):
+    def __init__(self,name):
         self.name = name
-        self.side = side
-        self.area = 0
-        self.cir = 0
-    def setArea(self):
+    def Area(self):
         pass
-    def getcircumference(self):
-        pass
-    def view(self):
-        print("Name: ",self.name, self.area, self.cir)
 class Triangle(Shape):
-    def __init__(self, len):
-        Shape.__init__(self, "Triangle", 3)
-        self.len = len
-    def setArea(self): #Override Method
-        self.area = 0.5 * self.len * self.len
-    def getcircumference(self):
-        self.cir = self.len * 3
-class Circle(Shape):
-    def __init__(self, r):
-        Shape.__init__(self, "Circle", 0)
-        self.r = r
-    def setArea(self): #Override Method
-        self.area = "{:.2f}".format(math.pi * math.pow(self.r, 2))
-    def getcircumference(self):
-        self.cir = "{:.2f}".format(2 * math.pi * self.r)
+    def __init__(self,name,height, weight):
+        Shape.__init__(self, name)
+        self.height = height
+        self.weight = weight
+    def Area(self):
+        print(self.name)
+        area = 0.5 * self.height * self.weight
+        return area
+class Rectangle(Shape):
+    def __init__(self, name, wide, long):
+        Shape.__init__(self, name)
+        self.wide = wide
+        self.long = long
+    def Area(self):
+        print(self.name)
+        area = self.wide * self.long
+        return area
 
-obj = Triangle(8)
-obj.setArea()
-obj.getcircumference()
-obj.view()
+print("1. Triangle 2.Rectangle")
+choose = int(input("1 or 2:"))
+if choose == 1:
+    inp = eval(input("input height weight: "))
+    triangle = Triangle("Triangle", inp[0], inp[1])
+    print(triangle.Area())
+elif choose == 2:
+    inp = eval(input("input wide long: "))
+    rectangle = Rectangle("Rectangle", inp[0], inp[1])
+    print(rectangle.Area())
 
-obj2 = Circle(10)
-obj2.setArea()
-obj2.getcircumference()
-obj2.view()
+
